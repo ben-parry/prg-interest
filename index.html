@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Paradigms Research Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Kalice';
+      src: url('kalice-web/Kalice-Regular.woff2') format('woff2'),
+           url('kalice-web/Kalice-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Kalice';
+      src: url('kalice-web/Kalice-Italic.woff2') format('woff2'),
+           url('kalice-web/Kalice-Italic.woff') format('woff');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Kalice';
+      src: url('kalice-web/Kalice-Medium.woff2') format('woff2'),
+           url('kalice-web/Kalice-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Kalice';
+      src: url('kalice-web/Kalice-MediumItalic.woff2') format('woff2'),
+           url('kalice-web/Kalice-MediumItalic.woff') format('woff');
+      font-weight: 500;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Kalice';
+      src: url('kalice-web/Kalice-Bold.woff2') format('woff2'),
+           url('kalice-web/Kalice-Bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Kalice';
+      src: url('kalice-web/Kalice-BoldItalic.woff2') format('woff2'),
+           url('kalice-web/Kalice-BoldItalic.woff') format('woff');
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+    }
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #F0EBE1;
+      --bg-card: #E8E2D6;
+      --text: #2C2418;
+      --text-light: #5A4E3C;
+      --accent: #7B4F35;
+      --accent-hover: #633E29;
+      --accent-olive: #5C6B4F;
+      --rule: #C4B9A6;
+      --rule-dark: #9E9282;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif 4', 'Georgia', serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* William Morris banner */
+    .morris-banner {
+      width: 100%;
+      height: 80px;
+      background-image: url('morris-wallpaper.jpg');
+      background-repeat: repeat-x;
+      background-size: auto 100%;
+      background-position: center;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: 2rem 0;
+      opacity: 0.85;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding-bottom: 0;
+    }
+
+    .header h1 {
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .header .season {
+      font-family: 'Kalice', 'Georgia', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+    }
+
+    /* About */
+    .about p {
+      margin-bottom: 1rem;
+    }
+
+    .about p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Drop cap */
+    .drop-cap::first-letter {
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 700;
+      float: left;
+      font-size: 3.8em;
+      line-height: 0.8;
+      padding-right: 0.08em;
+      padding-top: 0.06em;
+      color: var(--accent);
+    }
+
+    /* Section headings */
+    h2 {
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    /* Details list */
+    .details ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .details li {
+      padding-left: 1.2em;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+
+    .details li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule-dark);
+    }
+
+    .details .note {
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .details .pricing {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .details .pricing p {
+      margin-bottom: 0.25rem;
+    }
+
+    .details .pricing .price-amount {
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .details .pricing .price-amount.supporter {
+      color: var(--accent-olive);
+    }
+
+    .details .schedule {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    /* Rule / divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+
+    /* Application form */
+    .application-form {
+      border: 1px solid var(--rule);
+      padding: 1.75rem 1.5rem;
+      background: var(--bg-card);
+    }
+
+    .application-form h3 {
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .form-group .subtext {
+      display: block;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      font-family: 'Source Serif 4', 'Georgia', serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--rule-dark);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 5rem;
+    }
+
+    .form-group .char-counter {
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    .form-group .char-counter.over {
+      color: #9E4040;
+    }
+
+    /* Buttons */
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.85rem 1.5rem;
+      background-color: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-family: 'Kalice', 'Georgia', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid var(--accent);
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Form messages */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .form-success h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .form-error {
+      display: none;
+      text-align: center;
+      font-style: italic;
+      color: #9E4040;
+      font-size: 0.9rem;
+      margin-top: 0.75rem;
+    }
+
+    /* Desktop */
+    @media (min-width: 600px) {
+      .page {
+        padding: 4rem 2rem 3rem;
+      }
+
+      .header h1 {
+        font-size: 2.4rem;
+      }
+
+      .btn {
+        width: auto;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="header">
+      <h1>The Paradigms<br>Research Group</h1>
+      <p class="season">Season 1: Religion &amp; Work — April to June 2026</p>
+    </header>
+
+    <!-- William Morris banner -->
+    <div class="morris-banner" role="img" aria-label="Decorative William Morris pattern"></div>
+
+    <section class="about">
+      <p class="drop-cap">Over the last year Ben and Michelle have been running a reading group in Toronto to understand the background beliefs that have created the world we live in and see what it might take to find new ones.</p>
+      <p>So far we have read close to 40 seminal papers including: Alan Turing, C. Thi Nguyen, and Charles Taylor.</p>
+      <p>We are now beginning a more rigorous research project and in the second quarter of 2026 we are going to be looking at the relationship between Religion and Work.</p>
+      <p>We want to understand: What are our current ideas about work? Do these have anything to do with religion? If so, what is it? What is the relationship between our projects and faith? Can we treat our work religiously? Should we?</p>
+      <p>To investigate this we are going to read Weber, Smith (Sentiments not Wealth), Dōgen, Marx, Arendt, Joel Mokyr, Frederick Douglass, Will Manidis and Nabeel Qureshi.</p>
+      <p>We have a very limited number of spots for new members&thinsp;—&thinsp;but if you are interested in taking up a serious reading project to see what it might take to transform ourselves and our society then we would encourage you to leave your information below. We will reach out if a spot opens up.</p>
+    </section>
+
+    <hr>
+
+    <section class="details">
+      <h2>Membership</h2>
+      <ul>
+        <li>Access to the full season reading list</li>
+        <li>A high quality printed ticket</li>
+        <li>Added to the season's WhatsApp group</li>
+        <li>Printed papers each session</li>
+      </ul>
+      <div class="pricing">
+        <p><span class="price-amount">Season Membership: $32</span> — less than $2.50 per session for 13 sessions</p>
+        <p><span class="price-amount supporter">Supporter: $320</span> — help us invest in PRG to keep it sustainable and growing</p>
+      </div>
+      <p class="note">Your first session is always free. After that, membership is required. You can join mid-season but dues aren't pro-rated.</p>
+      <p class="schedule">Wednesdays, 6–9 PM, Toronto.</p>
+      <p class="note">Other details will be shared in the dedicated WhatsApp group.</p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Express Interest</h2>
+      <div class="application-form" id="application-form">
+
+        <div id="form-fields">
+          <form id="prg-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="socials">Socials or Personal Website</label>
+              <span class="subtext">List anything online that you think represents you well</span>
+              <textarea id="socials" name="socials" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="belief">What is something you used to believe as foundational that you have since revised?</label>
+              <span class="subtext">Less than 500 characters</span>
+              <textarea id="belief" name="belief" rows="4" maxlength="500" required></textarea>
+              <div class="char-counter" id="char-counter">0 / 500</div>
+            </div>
+
+            <button type="submit" class="btn" id="submit-btn">Express Interest</button>
+            <div class="form-error" id="form-error">Something went wrong. Please try again or email ben@benparry.ca directly.</div>
+          </form>
+        </div>
+
+        <div class="form-success" id="form-success">
+          <h3>Thank You</h3>
+          <p>We've received your information and will reach out if a spot opens up.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- William Morris banner -->
+    <div class="morris-banner" role="img" aria-label="Decorative William Morris pattern"></div>
+
+  </div>
+
+  <script>
+    // Character counter
+    const beliefField = document.getElementById('belief');
+    const charCounter = document.getElementById('char-counter');
+
+    beliefField.addEventListener('input', function () {
+      const len = this.value.length;
+      charCounter.textContent = len + ' / 500';
+      charCounter.classList.toggle('over', len > 500);
+    });
+
+    // Form submission
+    // TODO: Replace this URL with your Google Apps Script Web App URL
+    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+    const form = document.getElementById('prg-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formError = document.getElementById('form-error');
+    const formFields = document.getElementById('form-fields');
+    const formSuccess = document.getElementById('form-success');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      formError.style.display = 'none';
+
+      // Basic validation
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const belief = document.getElementById('belief').value.trim();
+
+      if (!name || !email || !belief) {
+        formError.textContent = 'Please fill in all required fields.';
+        formError.style.display = 'block';
+        return;
+      }
+
+      if (belief.length > 500) {
+        formError.textContent = 'Please keep your response to 500 characters or fewer.';
+        formError.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      const data = {
+        name: name,
+        email: email,
+        socials: document.getElementById('socials').value.trim(),
+        belief: belief
+      };
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        // no-cors means we can't read the response, so we assume success
+        formFields.style.display = 'none';
+        formSuccess.style.display = 'block';
+      } catch (err) {
+        formError.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Express Interest';
+      }
+    });
+  </script>
+
+</body>
+</html>
