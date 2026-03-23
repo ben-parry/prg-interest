@@ -15,6 +15,7 @@ function doPost(e) {
       data.name || '',
       data.email || '',
       data.socials || '',
+      data.referral || '',
       data.belief || ''
     ]);
 
@@ -25,6 +26,7 @@ function doPost(e) {
       'Name: ' + (data.name || '—'),
       'Email: ' + (data.email || '—'),
       'Socials: ' + (data.socials || '—'),
+      'Referral: ' + (data.referral || '—'),
       '',
       'Belief question:',
       data.belief || '—'
